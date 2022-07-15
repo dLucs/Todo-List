@@ -1,0 +1,149 @@
+:root {
+  --blue-050: #dceefb;
+  --blue-100: #b6e0fe;
+  --blue-200: #84c5f4;
+  --blue-300: #62b0e8;
+  --blue-400: #4098d7;
+  --blue-500: #2680c2;
+  --blue-600: #186faf;
+  --blue-700: #0f609b;
+  --blue-800: #0a558c;
+  --blue-900: #003e6b;
+
+  --blue-grey-050: #f0f4f8;
+  --blue-grey-100: #d9e2ec;
+  --blue-grey-200: #bcccdc;
+  --blue-grey-300: #9fb3c8;
+  --blue-grey-400: #829ab1;
+  --blue-grey-500: #627d98;
+  --blue-grey-600: #486581;
+  --blue-grey-700: #334e68;
+  --blue-grey-800: #243b53;
+  --blue-grey-900: #102a43;
+
+  --teal-050: #f0fcf9;
+  --teal-100: #c6f7e9;
+  --teal-200: #8eedd1;
+  --teal-300: #5fe3c0;
+  --teal-400: #2dcca7;
+  --teal-500: #17b897;
+  --teal-600: #079a82;
+  --teal-700: #048271;
+  --teal-800: #016457;
+  --teal-900: #004440;
+
+  --red-050: #ffeeee;
+  --red-100: #facdcd;
+  --red-200: #f29b9b;
+  --red-300: #e66a6a;
+  --red-400: #d64545;
+  --red-500: #ba2525;
+  --red-600: #a61b1b;
+  --red-700: #911111;
+  --red-800: #780a0a;
+  --red-900: #610404;
+
+  --yellow-050: #fffaeb;
+  --yellow-100: #fcefc7;
+  --yellow-200: #f8e3a3;
+  --yellow-300: #f9da8b;
+  --yellow-400: #f7d070;
+  --yellow-500: #e9b949;
+  --yellow-600: #c99a2e;
+  --yellow-700: #a27c1a;
+  --yellow-800: #7c5e10;
+  --yellow-900: #513c06;
+}
+
+html {
+  font-family: "Roboto";
+  line-height: 1.4;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+body {
+  background-color: var(--blue-grey-100);
+  max-width: 800px;
+  max-height: 920px;
+  display: grid;
+  margin: auto;
+  grid:
+    "header todos" auto
+    "projects todos" auto /
+    1fr 3fr;
+}
+
+.header {
+  grid-area: header;
+  background-color: white;
+  margin: 0;
+  border-top-left-radius: 10px;
+  color: var(--blue-400);
+  padding: 1em;
+  display: flex;
+}
+.header img {
+  width: auto;
+  height: 120px;
+}
+.header h2 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-projects {
+  grid-area: projects;
+  background-color: white;
+  min-height: 100vh;
+  padding: 1em;
+  padding-top: 0;
+  border-top: 2px solid var(--blue-grey-050);
+}
+.all-projects h2 {
+  margin: 0;
+}
+
+.todo-list {
+  grid-area: todos;
+  justify-content: center;
+  background-color: var(--blue-grey-050);
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 320px) and (max-width: 1024px) {
+  body {
+    grid:
+      "header projects"
+      "todos todos";
+    min-height: fit-content;
+  }
+  .header {
+    height: auto;
+  }
+  .all-projects {
+    min-height: 100px;
+  }
+  .project-list {
+    display: flex;
+    font-size: small;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .todo-list {
+    height: 100vh;
+  }
+}

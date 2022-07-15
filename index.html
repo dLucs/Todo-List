@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Todo-List</title>
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="./img/DrawKit Vector Illustration Animal & Pets (1).png"
+        alt="Birb"
+      />
+      <h2 class="title">birb.do</h2>
+    </div>
+
+    <div class="all-projects">
+      <h2 class="project-list-title">Projects</h2>
+      <ul class="project-list">
+        <li class="active-project">Work</li>
+        <li>Personal</li>
+        <li>Shopping</li>
+      </ul>
+      <form action="">
+        <input
+          type="text"
+          class="new-project"
+          placeholder="Add new Project"
+          aria-label="New Project"
+        />
+      </form>
+    </div>
+
+    <div class="todo-list">
+      <div class="todo-header">
+        <h2 class="list-title">Work</h2>
+        <p class="todo-count">3 tasks remaining</p>
+      </div>
+      <div class="todo-body">
+        <div class="todos">
+          <div class="todo">
+            <input type="checkbox" id="todo-1" />
+            <label for="todo-1">
+              <span class="custom checkbox"></span> Finish up
+              presentation</label
+            >
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </div>
+        </div>
+
+        <div class="add-todo">
+          <form action="">
+            <input
+              type="text"
+              class="new-todo"
+              placeholder="Add new Todo"
+              aria-label="New Todo"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
