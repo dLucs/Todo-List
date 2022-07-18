@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;500&display=swap"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
@@ -21,7 +23,6 @@
     </div>
 
     <div class="all-projects">
-      <h2 class="project-list-title">Projects</h2>
       <ul class="project-list">
         <li class="active-project">Work</li>
         <li>Personal</li>
@@ -30,10 +31,11 @@
       <form action="">
         <input
           type="text"
-          class="new-project"
-          placeholder="Add new Project"
+          class="new project"
+          placeholder="New Project"
           aria-label="New Project"
         />
+        <button class="add-project">✚</button>
       </form>
     </div>
 
@@ -59,10 +61,11 @@
           <form action="">
             <input
               type="text"
-              class="new-todo"
-              placeholder="Add new Todo"
+              class="new todo"
+              placeholder="New Todo"
               aria-label="New Todo"
             />
+            <button class="add-todo">✚</button>
           </form>
         </div>
       </div>

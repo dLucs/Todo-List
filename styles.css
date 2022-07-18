@@ -71,10 +71,11 @@ html {
 
 body {
   background-color: var(--blue-grey-100);
-  max-width: 800px;
-  max-height: 920px;
+  max-width: 60vw;
+  max-height: 80vh;
   display: grid;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   grid:
     "header todos" auto
     "projects todos" auto /
@@ -99,29 +100,129 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Bebas Neue";
+  font-size: 40px;
 }
 
 .all-projects {
   grid-area: projects;
   background-color: white;
-  min-height: 100vh;
-  padding: 1em;
+  min-height: 80vh;
+  padding-left: 1em;
   padding-top: 0;
-  border-top: 2px solid var(--blue-grey-050);
-}
-.all-projects h2 {
-  margin: 0;
+  border-top: 1px solid var(--blue-grey-050);
+  border-bottom-left-radius: 10px;
+  color: var(--blue-400);
 }
 
+.project-list {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  list-style: ;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: var(--blue-200);
+  margin-top: 1em;
+}
+.active-project {
+  font-weight: 700;
+  color: var(--blue-400);
+}
+
+.new {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  max-width: 120px;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+
+  transition: border-bottom 150ms ease-in;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
+}
+
+.new:focus::placeholder {
+  opacity: 0.3;
+}
+
+::placeholder {
+  color: var(--blue-100);
+}
+
+button {
+  background-color: var(--blue-200);
+  border-style: none;
+  border-radius: 0.5em;
+  padding: 0.2em 1em 0.2em 1em;
+  text-align: center;
+  font-size: 0.8em;
+  color: white;
+  cursor: pointer;
+  transition: background-color 250ms ease-in;
+}
+
+button:hover {
+  background-color: var(--blue-400);
+}
+
+li:hover {
+  cursor: pointer;
+}
 .todo-list {
   grid-area: todos;
   justify-content: center;
   background-color: var(--blue-grey-050);
   border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+}
+
+.new.todo {
+  max-width: 300px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+  border-radius: 0;
+}
+
+.todo-header {
+  margin-top: 1.5em;
+  color: var(--blue-400);
+  display: flex;
+  border-bottom: 2px solid white;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.todo-count {
+  margin-left: 6em;
+  font-size: 0.7em;
+  background-color: white;
+  padding: 0.4em;
+  border-radius: 0.6em;
+}
+
+.todo {
+  margin-top: 0.8rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
 }
 
 @media (min-width: 320px) and (max-width: 1024px) {
@@ -130,13 +231,33 @@ body {
       "header projects"
       "todos todos";
     min-height: fit-content;
+    margin: auto;
+    min-width: fit-content;
   }
   .header {
     height: auto;
   }
   .all-projects {
     min-height: 100px;
+    margin-top: ;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top: 0;
+    border-left: 1px solid var(--blue-grey-050);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
   }
+
+  .new {
+    font-size: 0.7em;
+  }
+
+  .add-project {
+    font-size: 0.7em;
+  }
+
   .project-list {
     display: flex;
     font-size: small;
@@ -145,5 +266,6 @@ body {
   }
   .todo-list {
     height: 100vh;
+    border-top-right-radius: 0;
   }
 }
