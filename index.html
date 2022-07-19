@@ -24,25 +24,35 @@
 
     <div class="all-projects">
       <ul class="project-list">
-        <li class="active-project">Work</li>
-        <li>Personal</li>
-        <li>Shopping</li>
+        <li class="active-project">
+          Work <button class="del-project">☒</button>
+        </li>
+        <li>Personal<button class="del-project">☒</button></li>
+        <li>Shopping<button class="del-project">☒</button></li>
       </ul>
       <form action="">
         <input
           type="text"
           class="new project"
+          id="new-project"
           placeholder="New Project"
           aria-label="New Project"
         />
-        <button class="add-project">✚</button>
+        <button class="add-project">+</button>
       </form>
     </div>
 
     <div class="todo-list">
       <div class="todo-header">
         <h2 class="list-title">Work</h2>
-        <p class="todo-count">3 tasks remaining</p>
+        <div class="info">
+          <p class="todo-count">3 tasks remaining</p>
+          <select name="filter">
+            <option value="value1" selected>No filter</option>
+            <option value="value2">Urgent</option>
+            <option value="value3">Due date</option>
+          </select>
+        </div>
       </div>
       <div class="todo-body">
         <div class="todos">
@@ -52,8 +62,12 @@
               <span class="custom checkbox"></span> Finish up
               presentation</label
             >
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
+            <span class="date">24/11/2022</span>
+            <span class="urgent">Urgent</span>
+            <div class="edit-btn">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div>
           </div>
         </div>
 
@@ -62,10 +76,19 @@
             <input
               type="text"
               class="new todo"
+              id="add-todo"
               placeholder="New Todo"
               aria-label="New Todo"
             />
-            <button class="add-todo">✚</button>
+            <label>
+              Due by:
+              <input type="date" name="due-by" />
+            </label>
+            <label>
+              Urgent
+              <input type="checkbox" name="urgent" />
+            </label>
+            <button class="add-todo-btn">+</button>
           </form>
         </div>
       </div>

@@ -130,7 +130,7 @@ body {
   color: var(--blue-400);
 }
 
-.new {
+.new.project {
   background: transparent;
   border: 0;
   border-bottom: 1px solid var(--blue-200);
@@ -142,6 +142,19 @@ body {
   outline: none;
 
   transition: border-bottom 150ms ease-in;
+}
+
+.new.todo {
+  max-width: 300px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+  border-radius: 0;
 }
 
 .new:focus {
@@ -168,12 +181,33 @@ button {
   transition: background-color 250ms ease-in;
 }
 
+.add-project,
+.add-todo-btn {
+  font-weight: 700;
+}
+
 button:hover {
   background-color: var(--blue-400);
 }
 
 li:hover {
   cursor: pointer;
+}
+
+.del-project {
+  background: transparent;
+  color: var(--red-050);
+  transition: color 150ms ease-in;
+}
+.del-project:hover {
+  color: var(--red-200);
+  background: transparent;
+}
+
+.project-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .todo-list {
   grid-area: todos;
@@ -187,31 +221,23 @@ li:hover {
   align-items: center;
 }
 
-.new.todo {
-  max-width: 300px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--blue-200);
-  font-size: 1.1em;
-  margin: 0;
-  font-weight: 500;
-  padding-top: 1em;
-  outline: none;
-  border-radius: 0;
-}
-
 .todo-header {
   margin-top: 1.5em;
   color: var(--blue-400);
   display: flex;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--blue-grey-100);
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
+  min-width: 320px;
+  width: 500px;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+}
 .todo-count {
-  margin-left: 6em;
   font-size: 0.7em;
   background-color: white;
   padding: 0.4em;
@@ -223,6 +249,59 @@ li:hover {
   background-color: white;
   padding: 1rem;
   border-radius: 0.6rem;
+  color: var(--blue-500);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em;
+}
+
+.date {
+  font-size: 0.7em;
+  color: var(--blue-200);
+  margin: 0.3em;
+}
+
+.urgent {
+  font-size: 0.7em;
+  color: var(--red-200);
+  border: 1px solid var(--red-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+}
+
+.edit-btn {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+.edit {
+  margin-bottom: 0.3em;
+}
+
+.new.todo {
+  padding-bottom: 0;
+}
+.todo label {
+  margin-left: 0.5rem;
+}
+
+.add-todo form {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  margin: 1em;
+  background-color: rgba(255, 255, 255, 0.438);
+  padding: 0 1em 1em 1em;
+  border-radius: 0.6rem;
+  color: var(--blue-200);
+}
+.add-todo input,
+label {
+  padding: 0;
+  margin: 0.5em;
+  font-size: 0.8em;
 }
 
 @media (min-width: 320px) and (max-width: 1024px) {
@@ -233,13 +312,15 @@ li:hover {
     min-height: fit-content;
     margin: auto;
     min-width: fit-content;
+    font-size: 115%;
   }
   .header {
     height: auto;
+    height: 90%;
   }
   .all-projects {
-    min-height: 100px;
-    margin-top: ;
+    min-height: 90px;
+    padding-left: 0em;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 0;
     border-top: 0;
@@ -248,6 +329,16 @@ li:hover {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+  }
+
+  .all-projects li {
+    font-size: 125%;
+  }
+
+  #new-project {
+    font-size: 80%;
+    width: 90px;
+    margin-left: 10px;
   }
 
   .new {
@@ -267,5 +358,31 @@ li:hover {
   .todo-list {
     height: 100vh;
     border-top-right-radius: 0;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .todo-header {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .todo {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .add-todo form {
+    width: 90vw;
+    margin: auto;
+
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  #add-todo {
+    font-size: 0.8em;
+    width: 120px;
   }
 }
