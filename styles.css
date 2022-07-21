@@ -118,13 +118,22 @@ body {
 .project-list {
   font-size: 1.2rem;
   line-height: 1.5;
-  list-style: ;
+  list-style: none;
   padding: 0;
   margin: 0;
   list-style: none;
   color: var(--blue-200);
   margin-top: 1em;
 }
+
+.project-name {
+  cursor: pointer;
+}
+
+.project-name:hover {
+  color: var(--blue-300);
+}
+
 .active-project {
   font-weight: 700;
   color: var(--blue-400);
@@ -173,12 +182,13 @@ button {
   background-color: var(--blue-200);
   border-style: none;
   border-radius: 0.5em;
-  padding: 0.2em 1em 0.2em 1em;
+  padding: 0.2em 0.5em 0.2em 0.5em;
   text-align: center;
   font-size: 0.8em;
   color: white;
   cursor: pointer;
   transition: background-color 250ms ease-in;
+  flex: none;
 }
 
 .add-project,
@@ -198,6 +208,7 @@ li:hover {
   background: transparent;
   color: var(--red-050);
   transition: color 150ms ease-in;
+  margin-right: 2em;
 }
 .del-project:hover {
   color: var(--red-200);
@@ -253,7 +264,7 @@ li:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1em;
+  margin: 1em 1em 0 1em;
 }
 
 .date {
@@ -284,24 +295,85 @@ li:hover {
   padding-bottom: 0;
 }
 .todo label {
-  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-width: 150px;
+  font-size: 0.7em;
 }
-
+.add-todo {
+  margin-top: 1em;
+}
 .add-todo form {
   display: flex;
   align-items: baseline;
   justify-content: space-evenly;
-  margin: 1em;
+  margin: 1.3em;
   background-color: rgba(255, 255, 255, 0.438);
-  padding: 0 1em 1em 1em;
+  padding: 0 1.3em 1.3em 1.3em;
   border-radius: 0.6rem;
   color: var(--blue-200);
+  font-size: 0.8em;
 }
 .add-todo input,
 label {
   padding: 0;
   margin: 0.5em;
   font-size: 0.8em;
+}
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.urgent {
+  opacity: 1;
+  position: relative;
+}
+/* Custom Checkbox Styling */
+.custom-checkbox {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.3em;
+  cursor: pointer;
+  border: 2px solid var(--blue-400);
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+
+  flex: none;
+}
+
+.todo:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.2);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background: var(--blue-200);
+  box-shadow: inset 0 0 0px 3px white;
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.todo label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  height: 3px;
+  background-color: var(--blue-600);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 150ms ease-in-out;
+}
+[type="checkbox"]:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 @media (min-width: 320px) and (max-width: 1024px) {
@@ -320,13 +392,13 @@ label {
   }
   .all-projects {
     min-height: 90px;
-    padding-left: 0em;
+    padding-left: 1em;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 0;
     border-top: 0;
     border-left: 1px solid var(--blue-grey-050);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     flex-direction: column;
   }
@@ -337,8 +409,7 @@ label {
 
   #new-project {
     font-size: 80%;
-    width: 90px;
-    margin-left: 10px;
+    width: 120px;
   }
 
   .new {
@@ -354,6 +425,10 @@ label {
     font-size: small;
     justify-content: space-evenly;
     flex-direction: column;
+  }
+
+  .del-project {
+    margin-left: 2em;
   }
   .todo-list {
     height: 100vh;
@@ -372,6 +447,10 @@ label {
     width: 90vw;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .todo label {
+    font-size: 0.65em;
   }
 
   .add-todo form {

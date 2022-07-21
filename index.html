@@ -11,6 +11,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="/script.js"></script>
     <title>Todo-List</title>
   </head>
   <body>
@@ -23,17 +24,22 @@
     </div>
 
     <div class="all-projects">
-      <ul class="project-list">
-        <li class="active-project">
+      <ul class="project-list" data-projects>
+       <!-- <li class="project-name active-project">
           Work <button class="del-project">☒</button>
         </li>
-        <li>Personal<button class="del-project">☒</button></li>
-        <li>Shopping<button class="del-project">☒</button></li>
+        <li class="project-name">
+          Personal<button class="del-project">☒</button>
+        </li>
+        <li class="project-name">
+          Shopping<button class="del-project">☒</button>
+        </li> -->
       </ul>
-      <form action="">
+      <form action="" data-new-project-form>
         <input
           type="text"
           class="new project"
+          data-new-project-input
           id="new-project"
           placeholder="New Project"
           aria-label="New Project"
@@ -42,11 +48,11 @@
       </form>
     </div>
 
-    <div class="todo-list">
+    <div class="todo-list" data-project-display-container>
       <div class="todo-header">
-        <h2 class="list-title">Work</h2>
+        <h2 class="list-title" data-project-title>Work</h2>
         <div class="info">
-          <p class="todo-count">3 tasks remaining</p>
+          <p class="todo-count"data-project-count>3 tasks remaining</p>
           <select name="filter">
             <option value="value1" selected>No filter</option>
             <option value="value2">Urgent</option>
@@ -55,11 +61,11 @@
         </div>
       </div>
       <div class="todo-body">
-        <div class="todos">
+        <div class="todos" data-todos>
           <div class="todo">
             <input type="checkbox" id="todo-1" />
             <label for="todo-1">
-              <span class="custom checkbox"></span> Finish up
+              <span class="custom-checkbox"></span> Finish up
               presentation</label
             >
             <span class="date">24/11/2022</span>
@@ -68,7 +74,19 @@
               <button class="edit">Edit</button>
               <button class="delete">Delete</button>
             </div>
+            
           </div>
+          <div class="todo">
+            <input type="checkbox" id="todo-2" />
+            <label for="todo-2">
+              <span class="custom-checkbox"></span> Plan next month's event</label
+            >
+            <span class="date">24/11/2022</span>
+            <span class="urgent">Urgent</span>
+            <div class="edit-btn">
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </div>
         </div>
 
         <div class="add-todo">
@@ -86,12 +104,13 @@
             </label>
             <label>
               Urgent
-              <input type="checkbox" name="urgent" />
+              <input type="checkbox" name="urgent" class="urgent" />
             </label>
             <button class="add-todo-btn">+</button>
           </form>
         </div>
       </div>
     </div>
+    
   </body>
 </html>
