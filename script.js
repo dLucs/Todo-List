@@ -11,6 +11,11 @@ export {
   projectContainer,
   selectedProjectId,
   projectDisplayContainer,
+  projectTitle,
+  selectedProject,
+  projectCount,
+  todosContainer,
+  todoTemplate,
 };
 
 const newProjectForm = document.querySelector("[data-new-project-form]");
@@ -22,20 +27,27 @@ const projectDisplayContainer = document.querySelector(
 const projectTitle = document.querySelector("[data-project-title]");
 const projectCount = document.querySelector("[data-project-count]");
 const todosContainer = document.querySelector("[data-todos]");
+const todoTemplate = document.getElementById("todo-template");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
   { id: "1658393563103", name: "Work", todos: [] },
   { id: "1658393629453", name: "Personal", todos: [] },
 ];
 
-//------- Visualize selected project || delete project------------//
-
 let selectedProjectId = localStorage.getItem(
   LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY
 );
+
+const selectedProject = projects.find(
+  (project) => project.id === selectedProjectId
+);
+
+//------- Visualize selected project || delete project------------//
+
 projectContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("project-name")) {
     selectedProjectId = e.target.dataset.projectId;
+
     save();
     render();
   }
@@ -46,8 +58,11 @@ projectContainer.addEventListener("click", (e) => {
       selectedProjectId = null;
     }
   }
+
   save();
   render();
+  location.reload();
+
   console.log(projects);
 });
 
