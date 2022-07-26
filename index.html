@@ -62,7 +62,7 @@
       </div>
       <div class="todo-body">
         <div class="todos" data-todos>
-          <div class="todo">
+          <!-- <div class="todo">
             <input type="checkbox" id="todo-1" />
             <label for="todo-1">
               <span class="custom-checkbox"></span> Finish up
@@ -86,13 +86,14 @@
             <div class="edit-btn">
               <button class="edit">Edit</button>
               <button class="delete">Delete</button>
-            </div>
+            </div> -->
         </div>
 
         <div class="add-todo">
-          <form action="">
+          <form action=""data-new-todo-form>
             <input
               type="text"
+              data-new-todo-input
               class="new todo"
               id="add-todo"
               placeholder="New Todo"
@@ -100,7 +101,7 @@
             />
             <label>
               Due by:
-              <input type="date" name="due-by" />
+              <input type="date" data-new-todo-date name="due-by" />
             </label>
             <label>
               Urgent

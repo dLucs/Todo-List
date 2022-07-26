@@ -1,5 +1,6 @@
 import { render } from "/modules/render.js";
 import { createProject } from "/modules/createProject.js";
+import { createTodo } from "/modules/createTodo.js";
 import {
   save,
   LOCAL_STORAGE_PROJECT_KEY,
@@ -28,6 +29,9 @@ const projectTitle = document.querySelector("[data-project-title]");
 const projectCount = document.querySelector("[data-project-count]");
 const todosContainer = document.querySelector("[data-todos]");
 const todoTemplate = document.getElementById("todo-template");
+const newTodoForm = document.querySelector("[data-new-todo-form]");
+const newTodoInput = document.querySelector("[data-new-todo-input]");
+const newTodoDate = document.querySelector("[data-new-todo-date]");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
   { id: "1658393563103", name: "Work", todos: [] },
@@ -50,6 +54,7 @@ projectContainer.addEventListener("click", (e) => {
 
     save();
     render();
+    location.reload();
   }
   if (e.target.matches(".del-project")) {
     const projectElement = e.target.parentElement;
@@ -61,7 +66,6 @@ projectContainer.addEventListener("click", (e) => {
 
   save();
   render();
-  location.reload();
 
   console.log(projects);
 });
@@ -75,6 +79,26 @@ newProjectForm.addEventListener("submit", (e) => {
   const project = createProject(projectName);
   newProjectInput.value = null;
   projects.push(project);
+  save();
+  render();
+  console.log(projects);
+});
+
+//------- Add new todo------------//
+
+newTodoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const todoName = newTodoInput.value;
+  if (todoName == null || todoName === "") return;
+  const todoDate = newTodoDate.value;
+  if (todoDate == null || todoDate === "") return;
+  const todo = createTodo(todoName, todoDate);
+  newTodoInput.value = null;
+  newTodoDate.value = null;
+  const actualSelectedProject = projects.find(
+    (project) => project.id === selectedProjectId
+  );
+  actualSelectedProject.todos.push(todo);
   save();
   render();
   console.log(projects);
