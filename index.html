@@ -103,10 +103,13 @@
               Due by:
               <input type="date" data-new-todo-date name="due-by" />
             </label>
-            <label>
-              Urgent
-              <input type="checkbox" name="urgent" class="urgent" />
-            </label>
+            
+              <select name="Priority" data-new-todo-priority>
+                <option value="No priority" selected>No priority</option>
+                <option value="Urgent">Urgent</option>
+               
+              </select>
+           
             <button class="add-todo-btn">+</button>
           </form>
         </div>
@@ -120,7 +123,7 @@
         >
         <p class="date"></p>
        
-        <span class="urgent">Urgent</span>
+        <ins class="urgent" data-new-todo-urgent>Urgent</ins>
         <div class="edit-btn">
           <button class="edit">Edit</button>
           <button class="delete">Delete</button>

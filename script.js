@@ -1,6 +1,7 @@
 import { render } from "/modules/render.js";
 import { createProject } from "/modules/createProject.js";
 import { createTodo } from "/modules/createTodo.js";
+import { reverseDate } from "/modules/reverseDate.js";
 import {
   save,
   LOCAL_STORAGE_PROJECT_KEY,
@@ -32,6 +33,7 @@ const todoTemplate = document.getElementById("todo-template");
 const newTodoForm = document.querySelector("[data-new-todo-form]");
 const newTodoInput = document.querySelector("[data-new-todo-input]");
 const newTodoDate = document.querySelector("[data-new-todo-date]");
+const newTodoPriority = document.querySelector("[data-new-todo-priority]");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
   { id: "1658393563103", name: "Work", todos: [] },
@@ -90,11 +92,14 @@ newTodoForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const todoName = newTodoInput.value;
   if (todoName == null || todoName === "") return;
-  const todoDate = newTodoDate.value;
+  const todoDate = reverseDate(newTodoDate.value);
   if (todoDate == null || todoDate === "") return;
-  const todo = createTodo(todoName, todoDate);
+  const todoPriority = newTodoPriority.value;
+  const todo = createTodo(todoName, todoDate, todoPriority);
+
   newTodoInput.value = null;
   newTodoDate.value = null;
+
   const actualSelectedProject = projects.find(
     (project) => project.id === selectedProjectId
   );
@@ -102,6 +107,20 @@ newTodoForm.addEventListener("submit", (e) => {
   save();
   render();
   console.log(projects);
+});
+
+todosContainer.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "input") {
+    const actualSelectedProject = projects.find(
+      (project) => project.id === selectedProjectId
+    );
+    const selectedTodo = actualSelectedProject.todos.find(
+      (todo) => todo.id === e.target.id
+    );
+    selectedTodo.complete = e.target.checked;
+    save();
+    render();
+  }
 });
 
 render();

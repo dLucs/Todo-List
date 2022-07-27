@@ -1,9 +1,9 @@
-function createTodo(name, date) {
+function createTodo(name, date, priority) {
   return {
     id: Date.now().toString(),
     name: name,
     date: date,
-    urgent: false,
+    priority: priority,
     complete: false,
   };
 }

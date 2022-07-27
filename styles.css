@@ -280,6 +280,17 @@ li:hover {
   padding: 0.3em;
   border-radius: 0.5em;
   margin: 0.3em;
+  text-decoration: none;
+}
+
+.no-priority {
+  font-size: 0.7em;
+  color: var(--blue-200);
+  border: 1px solid var(--blue-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+  text-decoration: none;
 }
 
 .edit-btn {
@@ -383,7 +394,7 @@ label {
       "todos todos";
     min-height: fit-content;
     margin: auto;
-    min-width: fit-content;
+    min-width: 100vw;
     font-size: 115%;
   }
   .header {

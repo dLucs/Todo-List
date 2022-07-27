@@ -37,7 +37,14 @@ function renderTodos(selectedProject) {
     const para = todoElement.querySelector("p");
     para.id = todo.id;
     para.textContent = todo.date;
-
+    const urgent = todoElement.querySelector("ins");
+    urgent.id = todo.id;
+    urgent.textContent = todo.priority;
+    if (urgent.textContent === "No priority") {
+      urgent.classList = "no-priority";
+    } else {
+      urgent.classList = "urgent";
+    }
     todosContainer.appendChild(todoElement);
   });
 }
