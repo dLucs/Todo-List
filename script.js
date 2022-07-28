@@ -34,6 +34,7 @@ const newTodoForm = document.querySelector("[data-new-todo-form]");
 const newTodoInput = document.querySelector("[data-new-todo-input]");
 const newTodoDate = document.querySelector("[data-new-todo-date]");
 const newTodoPriority = document.querySelector("[data-new-todo-priority]");
+const todoEdit = document.querySelector("[data-todo-edit]");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
   { id: "1658393563103", name: "Work", todos: [] },
@@ -109,6 +110,8 @@ newTodoForm.addEventListener("submit", (e) => {
   console.log(projects);
 });
 
+//------- Mark todo done------------//
+
 todosContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "input") {
     const actualSelectedProject = projects.find(
@@ -120,6 +123,22 @@ todosContainer.addEventListener("click", (e) => {
     selectedTodo.complete = e.target.checked;
     save();
     render();
+  }
+});
+
+todosContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit")) {
+    const actualSelectedProject = projects.find(
+      (project) => project.id === selectedProjectId
+    );
+    const selectedTodo = actualSelectedProject.todos.find(
+      (todo) => todo.id === e.target.id
+    );
+    let newTodo = prompt("Change Todo");
+    selectedTodo.name = newTodo;
+    save();
+    render();
+    console.log(projects);
   }
 });
 

@@ -37,6 +37,8 @@ function renderTodos(selectedProject) {
     const para = todoElement.querySelector("p");
     para.id = todo.id;
     para.textContent = todo.date;
+    const button = todoElement.querySelector("button");
+    button.id = todo.id;
     const urgent = todoElement.querySelector("ins");
     urgent.id = todo.id;
     urgent.textContent = todo.priority;
