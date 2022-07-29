@@ -34,7 +34,11 @@ const newTodoForm = document.querySelector("[data-new-todo-form]");
 const newTodoInput = document.querySelector("[data-new-todo-input]");
 const newTodoDate = document.querySelector("[data-new-todo-date]");
 const newTodoPriority = document.querySelector("[data-new-todo-priority]");
-const todoEdit = document.querySelector("[data-todo-edit]");
+const modal = document.querySelector("[data-modal]");
+const modalForm = document.querySelector("[data-edit-todo-form]");
+const editTodoInput = document.querySelector("[data-edit-todo-input]");
+const editTodoDate = document.querySelector("[data-edit-todo-date]");
+const editTodoPriority = document.querySelector("[data-edit-todo-priority]");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
   { id: "1658393563103", name: "Work", todos: [] },
@@ -126,6 +130,27 @@ todosContainer.addEventListener("click", (e) => {
   }
 });
 
+//------- Delete todo------------//
+todosContainer.addEventListener("click", (e) => {
+  if (e.target.matches(".delete")) {
+    const actualSelectedProject = projects.find(
+      (project) => project.id === selectedProjectId
+    );
+    const selectedTodo = actualSelectedProject.todos.find(
+      (todo) => todo.id === e.target.id
+    );
+    actualSelectedProject.todos = actualSelectedProject.todos.filter(
+      (todo) => todo !== selectedTodo
+    );
+
+    save();
+    render();
+
+    console.log(projects);
+  }
+});
+//------- Edit new todo------------//
+
 todosContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit")) {
     const actualSelectedProject = projects.find(
@@ -134,11 +159,40 @@ todosContainer.addEventListener("click", (e) => {
     const selectedTodo = actualSelectedProject.todos.find(
       (todo) => todo.id === e.target.id
     );
-    let newTodo = prompt("Change Todo");
-    selectedTodo.name = newTodo;
-    save();
-    render();
-    console.log(projects);
+    modal.style.display = "block";
+
+    modalForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const todoName = editTodoInput.value;
+      if (todoName == null || todoName === "") return;
+      const todoDate = reverseDate(editTodoDate.value);
+      if (todoDate == null || todoDate === "") return;
+      const todoPriority = editTodoPriority.value;
+      selectedTodo.name = todoName;
+      selectedTodo.date = todoDate;
+      selectedTodo.priority = todoPriority;
+
+      modal.style.display = "none";
+
+      save();
+      render();
+
+      console.log(projects);
+    });
+  }
+});
+
+//------- Close Modal------------//
+
+modalForm.addEventListener("click", (e) => {
+  if (e.target.tagName.toLowerCase() === "span") {
+    modal.style.display = "none";
+  }
+});
+window.addEventListener("click", (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
   }
 });
 

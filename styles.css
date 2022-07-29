@@ -60,7 +60,6 @@ html {
   line-height: 1.4;
   width: auto;
   height: auto;
-  overflow: hidden;
 }
 
 @media (min-width: 600px) {
@@ -220,6 +219,7 @@ li:hover {
   align-items: center;
   justify-content: space-between;
 }
+
 .todo-list {
   grid-area: todos;
   justify-content: center;
@@ -273,7 +273,7 @@ li:hover {
   margin: 0.3em;
 }
 
-.urgent {
+.high {
   font-size: 0.7em;
   color: var(--red-200);
   border: 1px solid var(--red-200);
@@ -283,7 +283,17 @@ li:hover {
   text-decoration: none;
 }
 
-.no-priority {
+.medium {
+  font-size: 0.7em;
+  color: var(--yellow-200);
+  border: 1px solid var(--yellow-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+  text-decoration: none;
+}
+
+.low {
   font-size: 0.7em;
   color: var(--blue-200);
   border: 1px solid var(--blue-200);
@@ -385,6 +395,42 @@ label {
 [type="checkbox"]:checked + label::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-edit {
+  background-color: #fefefe;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: fit-content;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media (min-width: 320px) and (max-width: 1024px) {

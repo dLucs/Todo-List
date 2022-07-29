@@ -25,15 +25,6 @@
 
     <div class="all-projects">
       <ul class="project-list" data-projects>
-       <!-- <li class="project-name active-project">
-          Work <button class="del-project">☒</button>
-        </li>
-        <li class="project-name">
-          Personal<button class="del-project">☒</button>
-        </li>
-        <li class="project-name">
-          Shopping<button class="del-project">☒</button>
-        </li> -->
       </ul>
       <form action="" data-new-project-form>
         <input
@@ -62,31 +53,6 @@
       </div>
       <div class="todo-body">
         <div class="todos" data-todos>
-          <!-- <div class="todo">
-            <input type="checkbox" id="todo-1" />
-            <label for="todo-1">
-              <span class="custom-checkbox"></span> Finish up
-              presentation</label
-            >
-            <span class="date">24/11/2022</span>
-            <span class="urgent">Urgent</span>
-            <div class="edit-btn">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div>
-            
-          </div>
-          <div class="todo">
-            <input type="checkbox" id="todo-2" />
-            <label for="todo-2">
-              <span class="custom-checkbox"></span> Plan next month's event</label
-            >
-            <span class="date">24/11/2022</span>
-            <span class="urgent">Urgent</span>
-            <div class="edit-btn">
-              <button class="edit">Edit</button>
-              <button class="delete">Delete</button>
-            </div> -->
         </div>
 
         <div class="add-todo">
@@ -105,15 +71,41 @@
             </label>
             
               <select name="Priority" data-new-todo-priority>
-                <option value="No priority" selected>No priority</option>
-                <option value="Urgent">Urgent</option>
-               
+                <option value="Low" selected>Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
            
             <button class="add-todo-btn">+</button>
           </form>
         </div>
       </div>
+    </div>
+    <div class="modal" data-modal>
+      <form class="modal-edit" action=""data-edit-todo-form>
+        <span class="close">&times;</span>
+        <input
+          type="text"
+          data-edit-todo-input
+          class="edit todo"
+          id="add-todo"
+          placeholder="Edit Todo"
+          aria-label="Edit Todo"
+        />
+        <label>
+          Due by:
+          <input type="date" data-edit-todo-date name="due-by" />
+        </label>
+        
+          <select name="Priority" data-edit-todo-priority>
+            <option value="Low" selected>Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+           
+          </select>
+       
+        <button class="add-todo-btn">+</button>
+      </form>
     </div>
     <template id="todo-template">
       <div class="todo">

@@ -39,13 +39,17 @@ function renderTodos(selectedProject) {
     para.textContent = todo.date;
     const button = todoElement.querySelector("button");
     button.id = todo.id;
+    const del = todoElement.querySelector(".delete");
+    del.id = todo.id;
     const urgent = todoElement.querySelector("ins");
     urgent.id = todo.id;
     urgent.textContent = todo.priority;
-    if (urgent.textContent === "No priority") {
-      urgent.classList = "no-priority";
+    if (urgent.textContent === "Low") {
+      urgent.classList = "low";
+    } else if (urgent.textContent === "Medium") {
+      urgent.classList = "medium";
     } else {
-      urgent.classList = "urgent";
+      urgent.classList = "high";
     }
     todosContainer.appendChild(todoElement);
   });
