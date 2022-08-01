@@ -1,4 +1,4 @@
-import { projects, selectedProjectId } from "/modules/script.js";
+import { projects, selectedProjectId } from "/script.js";
 
 const LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY = "todo.selectedProjectId";
 const LOCAL_STORAGE_PROJECT_KEY = "todo.projects";

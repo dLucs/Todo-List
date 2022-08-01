@@ -8,7 +8,7 @@ import {
   projectCount,
   todosContainer,
   todoTemplate,
-} from "/modules/script.js";
+} from "/script.js";
 
 function render() {
   clearElement(projectContainer);
