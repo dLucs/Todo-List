@@ -1,7 +1,7 @@
-import { render } from "./modules/render.js";
-import { createProject } from "./modules/createProject.js";
-import { createTodo } from "./modules/createTodo.js";
-import { reverseDate } from "./modules/reverseDate.js";
+import { render } from "/modules/render.js";
+import { createProject } from "/modules/createProject.js";
+import { createTodo } from "/modules/createTodo.js";
+import { reverseDate } from "/modules/reverseDate.js";
 import {
   save,
   LOCAL_STORAGE_PROJECT_KEY,
