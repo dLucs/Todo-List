@@ -408,7 +408,18 @@ label {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-
+#edit-todo {
+  max-width: 300px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+  border-radius: 0;
+}
 .modal-edit {
   background-color: #fefefe;
 
@@ -440,7 +451,7 @@ label {
       "todos todos";
     min-height: fit-content;
     margin: auto;
-    min-width: 100vw;
+    min-width: fit-content;
     font-size: 115%;
   }
   .header {

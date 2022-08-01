@@ -49,7 +49,7 @@ let selectedProjectId = localStorage.getItem(
   LOCAL_STORAGE_SELECTED_PROJECT_ID_KEY
 );
 
-const selectedProject = projects.find(
+let selectedProject = projects.find(
   (project) => project.id === selectedProjectId
 );
 
@@ -58,7 +58,7 @@ const selectedProject = projects.find(
 projectContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("project-name")) {
     selectedProjectId = e.target.dataset.projectId;
-
+    location.reload();
     save();
     render();
     location.reload();
