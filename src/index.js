@@ -39,22 +39,42 @@ const modalForm = document.querySelector("[data-edit-todo-form]");
 const editTodoInput = document.querySelector("[data-edit-todo-input]");
 const editTodoDate = document.querySelector("[data-edit-todo-date]");
 const editTodoPriority = document.querySelector("[data-edit-todo-priority]");
-
-import _ from "lodash";
-
-function component() {
-  const element = document.createElement("div");
-
-  // Lodash, now imported by this script
-
-  return element;
-}
-
-document.body.appendChild(component());
+const filterTodo = document.querySelector("[data-filter-todo]");
 
 let projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECT_KEY)) || [
-  { id: "1658393563103", name: "Work", todos: [] },
-  { id: "1658393629453", name: "Personal", todos: [] },
+  {
+    id: "1658393563103",
+    name: "Work",
+    todos: [
+      {
+        id: "1659608736269",
+        name: "Finish Design presentation",
+        date: "12-08-2022",
+        priority: "Medium",
+        complete: false,
+      },
+    ],
+  },
+  {
+    id: "1658393629453",
+    name: "Personal",
+    todos: [
+      {
+        id: "1659533603673",
+        name: "Call back Jane",
+        date: "11-08-2022",
+        priority: "High",
+        complete: false,
+      },
+      {
+        id: "1659595333452",
+        name: "Buy Milk",
+        date: "06-09-2022",
+        priority: "Medium",
+        complete: false,
+      },
+    ],
+  },
 ];
 
 let selectedProjectId = localStorage.getItem(
@@ -157,7 +177,7 @@ todosContainer.addEventListener("click", (e) => {
 
     save();
     render();
-
+    location.reload();
     console.log(projects);
   }
 });
@@ -189,12 +209,57 @@ todosContainer.addEventListener("click", (e) => {
 
       save();
       render();
-
+      location.reload();
       console.log(projects);
     });
   }
 });
 
+//------- Filter Todos------------//
+filterTodo.addEventListener("change", (e) => {
+  const todos = document.querySelectorAll(".todo");
+  const actualSelectedProject = projects.find(
+    (project) => project.id === selectedProjectId
+  );
+
+  const filteredTodos = actualSelectedProject.todos.filter(
+    (todo) => todo.priority === e.target.value
+  );
+
+  if (e.target.value === "No filter") {
+    location.reload();
+  } else {
+    todosContainer.innerHTML = "";
+    filteredTodos.forEach((filteredTodo) => {
+      const todoElement = document.importNode(todoTemplate.content, true);
+      const checkbox = todoElement.querySelector("input");
+      checkbox.id = filteredTodo.id;
+      checkbox.checked = filteredTodo.complete;
+      const label = todoElement.querySelector("label");
+      label.htmlFor = filteredTodo.id;
+      label.append(filteredTodo.name);
+      const para = todoElement.querySelector("p");
+      para.id = filteredTodo.id;
+      para.textContent = filteredTodo.date;
+      const button = todoElement.querySelector("button");
+      button.id = filteredTodo.id;
+      const del = todoElement.querySelector(".delete");
+      del.id = filteredTodo.id;
+      const urgent = todoElement.querySelector("ins");
+      urgent.id = filteredTodo.id;
+      urgent.textContent = filteredTodo.priority;
+      if (urgent.textContent === "Low") {
+        urgent.classList = "low";
+      } else if (urgent.textContent === "Medium") {
+        urgent.classList = "medium";
+      } else {
+        urgent.classList = "high";
+      }
+      todosContainer.appendChild(todoElement);
+    });
+  }
+  console.log(filteredTodos);
+});
 //------- Close Modal------------//
 
 modalForm.addEventListener("click", (e) => {
@@ -209,3 +274,5 @@ window.addEventListener("click", (e) => {
 });
 
 render();
+
+import _ from "lodash";
