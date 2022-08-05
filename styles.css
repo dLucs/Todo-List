@@ -1,0 +1,536 @@
+:root {
+  --blue-050: #dceefb;
+  --blue-100: #b6e0fe;
+  --blue-200: #84c5f4;
+  --blue-300: #62b0e8;
+  --blue-400: #4098d7;
+  --blue-500: #2680c2;
+  --blue-600: #186faf;
+  --blue-700: #0f609b;
+  --blue-800: #0a558c;
+  --blue-900: #003e6b;
+
+  --blue-grey-050: #f0f4f8;
+  --blue-grey-100: #d9e2ec;
+  --blue-grey-200: #bcccdc;
+  --blue-grey-300: #9fb3c8;
+  --blue-grey-400: #829ab1;
+  --blue-grey-500: #627d98;
+  --blue-grey-600: #486581;
+  --blue-grey-700: #334e68;
+  --blue-grey-800: #243b53;
+  --blue-grey-900: #102a43;
+
+  --teal-050: #f0fcf9;
+  --teal-100: #c6f7e9;
+  --teal-200: #8eedd1;
+  --teal-300: #5fe3c0;
+  --teal-400: #2dcca7;
+  --teal-500: #17b897;
+  --teal-600: #079a82;
+  --teal-700: #048271;
+  --teal-800: #016457;
+  --teal-900: #004440;
+
+  --red-050: #ffeeee;
+  --red-100: #facdcd;
+  --red-200: #f29b9b;
+  --red-300: #e66a6a;
+  --red-400: #d64545;
+  --red-500: #ba2525;
+  --red-600: #a61b1b;
+  --red-700: #911111;
+  --red-800: #780a0a;
+  --red-900: #610404;
+
+  --yellow-050: #fffaeb;
+  --yellow-100: #fcefc7;
+  --yellow-200: #f8e3a3;
+  --yellow-300: #f9da8b;
+  --yellow-400: #f7d070;
+  --yellow-500: #e9b949;
+  --yellow-600: #c99a2e;
+  --yellow-700: #a27c1a;
+  --yellow-800: #7c5e10;
+  --yellow-900: #513c06;
+}
+
+html {
+  font-family: "Roboto";
+  line-height: 1.4;
+  width: auto;
+  height: auto;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+body {
+  background-color: var(--blue-grey-100);
+  max-width: 60vw;
+  max-height: 80vh;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  grid:
+    "header todos" auto
+    "projects todos" auto /
+    1fr 3fr;
+}
+
+.header {
+  grid-area: header;
+  background-color: white;
+  margin: 0;
+  border-top-left-radius: 10px;
+  color: var(--blue-400);
+  padding: 1em;
+  display: flex;
+}
+.header img {
+  width: auto;
+  height: 120px;
+}
+.header h2 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Bebas Neue";
+  font-size: 40px;
+}
+
+.all-projects {
+  grid-area: projects;
+  background-color: white;
+  min-height: 80vh;
+  padding-left: 1em;
+  padding-top: 0;
+  border-top: 1px solid var(--blue-grey-050);
+  border-bottom-left-radius: 10px;
+  color: var(--blue-400);
+}
+
+.project-list {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: var(--blue-200);
+  margin-top: 1em;
+}
+
+.project-name {
+  cursor: pointer;
+}
+
+.project-name:hover {
+  color: var(--blue-300);
+}
+
+.active-project {
+  font-weight: 700;
+  color: var(--blue-400);
+}
+
+.new.project {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  max-width: 120px;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+
+  transition: border-bottom 150ms ease-in;
+}
+
+.new.todo {
+  max-width: 300px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+  border-radius: 0;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
+}
+
+.new:focus::placeholder {
+  opacity: 0.3;
+}
+
+::placeholder {
+  color: var(--blue-100);
+}
+
+button {
+  background-color: var(--blue-200);
+  border-style: none;
+  border-radius: 0.5em;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  text-align: center;
+  font-size: 0.8em;
+  color: white;
+  cursor: pointer;
+  transition: background-color 250ms ease-in;
+  flex: none;
+}
+
+.add-project,
+.add-todo-btn {
+  font-weight: 700;
+}
+
+button:hover {
+  background-color: var(--blue-400);
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.del-project {
+  background: transparent;
+  color: var(--red-050);
+  transition: color 150ms ease-in;
+  margin-right: 2em;
+}
+.del-project:hover {
+  color: var(--red-200);
+  background: transparent;
+}
+
+.project-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-list {
+  grid-area: todos;
+  justify-content: center;
+  background-color: var(--blue-grey-050);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-header {
+  margin-top: 1.5em;
+  color: var(--blue-400);
+  display: flex;
+  border-bottom: 2px solid var(--blue-grey-100);
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  min-width: 320px;
+  width: 500px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.todo-count {
+  font-size: 0.7em;
+  background-color: white;
+  padding: 0.4em;
+  border-radius: 0.6em;
+}
+
+.todo {
+  margin-top: 0.8rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  color: var(--blue-500);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 1em 0 1em;
+}
+
+.date {
+  font-size: 0.7em;
+  color: var(--blue-200);
+  margin: 0.3em;
+}
+
+.high {
+  font-size: 0.7em;
+  color: var(--red-200);
+  border: 1px solid var(--red-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+  text-decoration: none;
+}
+
+.medium {
+  font-size: 0.7em;
+  color: var(--yellow-200);
+  border: 1px solid var(--yellow-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+  text-decoration: none;
+}
+
+.low {
+  font-size: 0.7em;
+  color: var(--blue-200);
+  border: 1px solid var(--blue-200);
+  padding: 0.3em;
+  border-radius: 0.5em;
+  margin: 0.3em;
+  text-decoration: none;
+}
+
+.edit-btn {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8em;
+}
+.edit {
+  margin-bottom: 0.3em;
+}
+
+.new.todo {
+  padding-bottom: 0;
+}
+.todo label {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-width: 150px;
+  font-size: 0.7em;
+}
+.add-todo {
+  margin-top: 1em;
+}
+.add-todo form {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  margin: 1.3em;
+  background-color: rgba(255, 255, 255, 0.438);
+  padding: 0 1.3em 1.3em 1.3em;
+  border-radius: 0.6rem;
+  color: var(--blue-200);
+  font-size: 0.8em;
+}
+.add-todo input,
+label {
+  padding: 0;
+  margin: 0.5em;
+  font-size: 0.8em;
+}
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.urgent {
+  opacity: 1;
+  position: relative;
+}
+/* Custom Checkbox Styling */
+.custom-checkbox {
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.3em;
+  cursor: pointer;
+  border: 2px solid var(--blue-400);
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
+
+  flex: none;
+}
+
+.todo:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.2);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background: var(--blue-200);
+  box-shadow: inset 0 0 0px 3px white;
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.todo label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  height: 3px;
+  background-color: var(--blue-600);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 150ms ease-in-out;
+}
+[type="checkbox"]:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+#edit-todo {
+  max-width: 300px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--blue-200);
+  font-size: 1.1em;
+  margin: 0;
+  font-weight: 500;
+  padding-top: 1em;
+  outline: none;
+  border-radius: 0;
+}
+.modal-edit {
+  background-color: #fefefe;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: fit-content;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 320px) and (max-width: 1024px) {
+  body {
+    grid:
+      "header projects"
+      "todos todos";
+    min-height: fit-content;
+    margin: auto;
+    min-width: 100vw;
+    font-size: 115%;
+  }
+  .header {
+    min-height: 90px;
+
+    padding-bottom: 0;
+  }
+  .all-projects {
+    min-height: 90px;
+    padding-left: 1em;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top: 0;
+    border-left: 1px solid var(--blue-grey-050);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .all-projects li {
+    font-size: 125%;
+  }
+
+  #new-project {
+    font-size: 80%;
+    width: 120px;
+  }
+
+  .new {
+    font-size: 0.7em;
+  }
+
+  .add-project {
+    font-size: 0.7em;
+  }
+
+  .project-list {
+    display: flex;
+    font-size: small;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  .del-project {
+    margin-left: 2em;
+  }
+  .todo-list {
+    height: 100vh;
+    border-top-right-radius: 0;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .todo-header {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .todo {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .todo label {
+    font-size: 0.65em;
+  }
+
+  .add-todo form {
+    width: 90vw;
+    margin: auto;
+
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  #add-todo {
+    font-size: 0.8em;
+    width: 120px;
+  }
+}

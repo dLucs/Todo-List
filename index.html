@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+   
+  
+    <title>Todo-List</title>
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="./img/DrawKit Vector Illustration Animal _ Pets (1).png"
+        alt="Birb"
+      />
+      <h2 class="title">birb.do</h2>
+    </div>
+
+    <div class="all-projects">
+      <ul class="project-list" data-projects>
+      </ul>
+      <form action="" data-new-project-form>
+        <input
+          type="text"
+          class="new project"
+          data-new-project-input
+          id="new-project"
+          placeholder="New Project"
+          aria-label="New Project"
+        />
+        <button class="add-project">+</button>
+      </form>
+    </div>
+
+    <div class="todo-list" data-project-display-container>
+      <div class="todo-header">
+        <h2 class="list-title" data-project-title></h2>
+        <div class="info">
+          <p class="todo-count"data-project-count></p>
+          <select name="filter" data-filter-todo>
+            <option value="No filter" selected>No filter</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+
+          </select>
+        </div>
+      </div>
+      <div class="todo-body">
+        <div class="todos" data-todos>
+        </div>
+
+        <div class="add-todo">
+          <form action=""data-new-todo-form>
+            <input
+              type="text"
+              data-new-todo-input
+              class="new todo"
+              id="add-todo"
+              placeholder="New Todo"
+              aria-label="New Todo"
+            />
+            <label>
+              Due by:
+              <input type="date" data-new-todo-date name="due-by" />
+            </label>
+            
+              <select name="Priority" data-new-todo-priority>
+                <option value="Low" selected>Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+           
+            <button class="add-todo-btn">+</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal" data-modal>
+      <form class="modal-edit" action=""data-edit-todo-form>
+        <span class="close">&times;</span>
+        <input
+          type="text"
+          data-edit-todo-input
+          class="edit todo"
+          id="edit-todo"
+          placeholder="Edit Todo"
+          aria-label="Edit Todo"
+        />
+        <label>
+          Due by:
+          <input type="date" data-edit-todo-date name="due-by" />
+        </label>
+        
+          <select name="Priority" data-edit-todo-priority>
+            <option value="Low" selected>Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+           
+          </select>
+       
+        <button class="add-todo-btn">+</button>
+      </form>
+    </div>
+    <template id="todo-template">
+      <div class="todo">
+        <input type="checkbox" />
+        <label>
+          <span class="custom-checkbox"></span></label
+        >
+        <p class="date"></p>
+       
+        <ins class="urgent" data-new-todo-urgent>Urgent</ins>
+        <div class="edit-btn">
+          <button class="edit">Edit</button>
+          <button class="delete">Delete</button>
+        </div>
+    </template>
+    <script src="/dist/main.js"></script>
+  </body>
+</html>
