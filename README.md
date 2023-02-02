@@ -3,4 +3,5 @@ A Todo-List App created with JS Modules and optimized for computers and mobile d
 Try it here! https://dlucs.github.io/Todo-List/
 
 
-<img width="1007" alt="Screenshot 2022-08-05 at 17 09 34" src="https://user-images.githubusercontent.com/99974795/183106693-e4fa88d8-db44-4383-ab36-322d7e9ba602.png">
+![image](https://user-images.githubusercontent.com/99974795/216348977-865e2294-1afd-481f-af15-04064db5997e.png)
+
